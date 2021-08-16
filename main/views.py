@@ -1,7 +1,6 @@
 from typing import Text
 from django.shortcuts import render, HttpResponse, redirect
 from .models import ToDo, ToMeet
-from .forms import TodoForm
 # Create your views here.
 
 def homepage(request):
