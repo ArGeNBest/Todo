@@ -1,3 +1,4 @@
+from typing import Text
 from django.shortcuts import render, HttpResponse, redirect
 from .models import ToDo, ToMeet
 from .forms import TodoForm
@@ -17,9 +18,8 @@ def meeting(request):
 
 
 def add_todo(request):
-    form = TodoForm()
-    form = TodoForm(request.POST)
-    if form.is_valid():
-        form.save()
-    context = {'todo_list': form}
+    form = request.POST
+    text = form['todo_text']
+    todo = ToDo(text=text)
+    todo.save()
     return redirect(homepage)
