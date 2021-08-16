@@ -13,4 +13,4 @@ def test(request):
 def meeting(request):
     meet = ToMeet.objects.all()
     return render(request, 'meeting.html', {'tomeet': meet})
-   
+
