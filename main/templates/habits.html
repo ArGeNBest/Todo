@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habits</title>
+</head>
+<body>
+    <form action="{% url 'add_habit' %}" method="POST">
+        {% csrf_token %}
+        <textarea type="text" placeholder="Комментария" name="comment"></textarea> <br>
+        Важность: <br>
+        <input type="radio" name="important" value="False" checked>Нет <br>
+        <input type="radio" name="important" value="True">Да <br>
+        <button>Добавить</button>
+    </form>
+    {% for h in habit %}
+    <div>
+        <p>{{h.comment}}</p>
+        <p>{{h.important}}</p>
+        <p>{{h.done_for_today}}</p>
+    </div>
+    {% endfor %}
+</body>
+</html>
