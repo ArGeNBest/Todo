@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.base import Model
 
 # Create your models here.
 
@@ -14,3 +15,8 @@ class ToDo(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     is_closed = models.BooleanField(default=False)
     is_favorite = models.BooleanField(default=False)
+
+class Habits(models.Model):
+    done_for_today = models.DateTimeField(auto_now_add=True)
+    important = models.BooleanField(default=False)
+    comment = models.TextField()
