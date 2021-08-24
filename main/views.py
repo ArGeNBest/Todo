@@ -48,14 +48,7 @@ def add_habit(request):
 
 def mark_todo(request, id):
     todo = ToDo.objects.get(id=id)
-    todo.is_favorite = True
-    todo.save()
-    return redirect(homepage)
-
-
-def unmark_todo(request, id):
-    todo = ToDo.objects.get(id=id)
-    todo.is_favorite = False
+    todo.is_favorite = not todo.is_favorite
     todo.save()
     return redirect(homepage)
 
@@ -63,4 +56,11 @@ def unmark_todo(request, id):
 def delete_todo(request, id):
     todo = ToDo.objects.get(id=id)
     todo.delete()
+    return redirect(homepage)
+
+
+def closed_todo(request, id):
+    todo = ToDo.objects.get(id=id)
+    todo.is_closed = not todo.is_closed
+    todo.save() 
     return redirect(homepage)
